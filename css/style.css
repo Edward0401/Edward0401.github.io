@@ -365,18 +365,18 @@ body {
 #logo,
 #subtitle {
   text-decoration: none;
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-weight: 300;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 0px 0px rgba(0,0,0,0.3);
 }
 #logo {
-  font-size: 40px;
-  line-height: 40px;
-  letter-spacing: 2px;
+  font-size: 70px;
+  line-height: 30px;
+  letter-spacing: 5px;
 }
 #subtitle {
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 20px;
+  line-height: 20px;
   letter-spacing: 1px;
 }
 #subtitle-wrap {
@@ -389,7 +389,7 @@ body {
 .nav-icon,
 .main-nav-link {
   float: left;
-  color: #fff;
+  color: rgb(0, 0, 0);
   opacity: 0.6;
   text-decoration: none;
   text-shadow: 0 1px rgba(0,0,0,0.2);
