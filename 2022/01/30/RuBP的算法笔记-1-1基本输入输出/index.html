@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>起点 | RuBP的小站</title>
+  <title>RuBP的算法笔记-1.1基本输入输出 | RuBP的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这是我第一次尝试个人主页，请多多关照！新年新气象，今后我将会在这里（胡乱）记录一些学习和非学习上的有趣事情。时2022年1月5日 22：53：33">
+  <meta name="description" content="1.1基本输入输出-格式化1.printf格式化输出      占位符 含义    %i:%d、%o、%x int:(10),(8),(16)   %f float&#x2F;double   %e float&#x2F;double【科学计数法】   %g 自动选择%f&#x2F;%e   %s string，[首地址，要加&amp;]   %c char    %.xf 格式化输出，保留几位小数 注意：输出时小数尾部没有多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="起点">
-<meta property="og:url" content="http://example.com/2022/01/05/%E8%B5%B7%E7%82%B9/index.html">
+<meta property="og:title" content="RuBP的算法笔记-1.1基本输入输出">
+<meta property="og:url" content="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/index.html">
 <meta property="og:site_name" content="RuBP的小站">
-<meta property="og:description" content="这是我第一次尝试个人主页，请多多关照！新年新气象，今后我将会在这里（胡乱）记录一些学习和非学习上的有趣事情。时2022年1月5日 22：53：33">
+<meta property="og:description" content="1.1基本输入输出-格式化1.printf格式化输出      占位符 含义    %i:%d、%o、%x int:(10),(8),(16)   %f float&#x2F;double   %e float&#x2F;double【科学计数法】   %g 自动选择%f&#x2F;%e   %s string，[首地址，要加&amp;]   %c char    %.xf 格式化输出，保留几位小数 注意：输出时小数尾部没有多">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-05T14:56:43.000Z">
-<meta property="article:modified_time" content="2022-01-05T14:58:53.984Z">
+<meta property="article:published_time" content="2022-01-30T14:52:38.000Z">
+<meta property="article:modified_time" content="2022-01-30T14:54:20.838Z">
 <meta property="article:author" content="合弓纲电子">
 <meta name="twitter:card" content="summary">
   
@@ -77,10 +77,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-起点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-RuBP的算法笔记-1-1基本输入输出" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/01/05/%E8%B5%B7%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2022-01-05T14:56:43.000Z" itemprop="datePublished">2022-01-05</time>
+    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="article-date">
+  <time class="dt-published" datetime="2022-01-30T14:52:38.000Z" itemprop="datePublished">2022-01-30</time>
 </a>
     
   </div>
@@ -91,7 +91,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      起点
+      RuBP的算法笔记-1.1基本输入输出
     </h1>
   
 
@@ -99,12 +99,61 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>这是我第一次尝试个人主页，请多多关照！<br>新年新气象，今后我将会在这里（胡乱）记录一些学习和非学习上的有趣事情。<br>时2022年1月5日 22：53：33</p>
+        <h1 id="1-1基本输入输出-格式化"><a href="#1-1基本输入输出-格式化" class="headerlink" title="1.1基本输入输出-格式化"></a>1.1基本输入输出-格式化</h1><h2 id="1-printf格式化输出"><a href="#1-printf格式化输出" class="headerlink" title="1.printf格式化输出"></a>1.printf格式化输出</h2><ol>
+<li></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">占位符</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%i:%d、%o、%x</td>
+<td align="center">int:(10),(8),(16)</td>
+</tr>
+<tr>
+<td align="center">%f</td>
+<td align="center">float/double</td>
+</tr>
+<tr>
+<td align="center">%e</td>
+<td align="center">float/double【科学计数法】</td>
+</tr>
+<tr>
+<td align="center">%g</td>
+<td align="center">自动选择%f/%e</td>
+</tr>
+<tr>
+<td align="center">%s</td>
+<td align="center">string，[首地址，要加&amp;]</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="center">char</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><strong>%.xf</strong> 格式化输出，保留几位小数</li>
+<li><strong>注意：输出时小数尾部没有多余的0：</strong><br>printf(“%g”, x);</li>
+</ol>
+<h2 id="2-cout格式化输出"><a href="#2-cout格式化输出" class="headerlink" title="2.cout格式化输出"></a>2.cout格式化输出</h2><ol>
+<li><p><strong>setw(x)</strong>:</p>
+<p>规定输出宽度【右对齐】，不足的在<strong>前方</strong>补空；</p>
+<p>注意与空格区分，不能代替额外的空格。</p>
+</li>
+</ol>
+<h2 id="3-二者区别："><a href="#3-二者区别：" class="headerlink" title="3.二者区别："></a>3.二者区别：</h2><ol>
+<li>cin会主动<strong>忽略空格和换行</strong>，因而不能完全覆盖ASCII码</li>
+<li>时间区别，在竞赛平台上scanf更快；</li>
+<li>cin利用了<strong>缓冲区</strong></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/05/%E8%B5%B7%E7%82%B9/" data-id="cky1nyww800005wv5abtf3dr1" data-title="起点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" data-id="ckz1dxqvo000054v56m0j86u4" data-title="RuBP的算法笔记-1.1基本输入输出" class="article-share-link">Share</a>
       
       
       
@@ -114,15 +163,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2022/01/06/RuBP%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          RuBP的碎碎念-1【生竞的那些事】【总结】
-        
-      </div>
-    </a>
   
+    <a href="/2022/01/06/RuBP%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">RuBP的碎碎念-1【生竞的那些事】【总结】</div>
+    </a>
   
 </nav>
 

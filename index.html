@@ -75,6 +75,94 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-RuBP的算法笔记-1-1基本输入输出" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="article-date">
+  <time class="dt-published" datetime="2022-01-30T14:52:38.000Z" itemprop="datePublished">2022-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">RuBP的算法笔记-1.1基本输入输出</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-1基本输入输出-格式化"><a href="#1-1基本输入输出-格式化" class="headerlink" title="1.1基本输入输出-格式化"></a>1.1基本输入输出-格式化</h1><h2 id="1-printf格式化输出"><a href="#1-printf格式化输出" class="headerlink" title="1.printf格式化输出"></a>1.printf格式化输出</h2><ol>
+<li></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">占位符</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%i:%d、%o、%x</td>
+<td align="center">int:(10),(8),(16)</td>
+</tr>
+<tr>
+<td align="center">%f</td>
+<td align="center">float/double</td>
+</tr>
+<tr>
+<td align="center">%e</td>
+<td align="center">float/double【科学计数法】</td>
+</tr>
+<tr>
+<td align="center">%g</td>
+<td align="center">自动选择%f/%e</td>
+</tr>
+<tr>
+<td align="center">%s</td>
+<td align="center">string，[首地址，要加&amp;]</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="center">char</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><strong>%.xf</strong> 格式化输出，保留几位小数</li>
+<li><strong>注意：输出时小数尾部没有多余的0：</strong><br>printf(“%g”, x);</li>
+</ol>
+<h2 id="2-cout格式化输出"><a href="#2-cout格式化输出" class="headerlink" title="2.cout格式化输出"></a>2.cout格式化输出</h2><ol>
+<li><p><strong>setw(x)</strong>:</p>
+<p>规定输出宽度【右对齐】，不足的在<strong>前方</strong>补空；</p>
+<p>注意与空格区分，不能代替额外的空格。</p>
+</li>
+</ol>
+<h2 id="3-二者区别："><a href="#3-二者区别：" class="headerlink" title="3.二者区别："></a>3.二者区别：</h2><ol>
+<li>cin会主动<strong>忽略空格和换行</strong>，因而不能完全覆盖ASCII码</li>
+<li>时间区别，在竞赛平台上scanf更快；</li>
+<li>cin利用了<strong>缓冲区</strong></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" data-id="ckz1dxqvo000054v56m0j86u4" data-title="RuBP的算法笔记-1.1基本输入输出" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-RuBP的碎碎念" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/06/RuBP%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="article-date">
@@ -97,7 +185,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>托更许久，我在大一上结束前终于下定决心对自己高中阶段的热爱做一个总结。回首高中学习全理的这两年（尤其是三年来对生物的学习），自然和声明给予了我终身难忘的经历、深刻地影响了我的世界观，也结交了一群真诚而有趣的朋友。<br>然而，我最终还是为了发展去学习了计算机科学与技术，暂时放下了自己心中的热爱。但是放下不等于放弃，对精巧生命规律的信仰和惊叹还在。永远忘不了疯狂刷书、看了又忘、忘了又看的那段日子；永远忘不了和大佬们分工整理笔记；忘不了被生理生化疯狂折磨，三羧酸循环饶过谁；忘不了有趣的老师们，杨Sir和他的iCat、湖南口音超好听的杨海明老师、还有马伟元马委员长，以及那些神奇的歌曲和口诀……</p>
+        <p>托更许久，我在大一上结束前终于下定决心对自己高中阶段的热爱做一个总结。回首高中学习全理的这两年（尤其是三年来对生物的学习），对自然和生命的那段学习过程给予了我终身难忘的经历、深刻地影响了我的世界观，也使我结交了一群真诚而有趣的朋友。<br>然而，我最终还是为了发展去学习了计算机科学与技术，暂时放下了自己心中的热爱。但是放下不等于放弃，对精巧生命规律的信仰和惊叹还在。永远忘不了疯狂刷书、看了又忘、忘了又看的那段日子；永远忘不了和大佬们分工整理笔记；忘不了被生理生化疯狂折磨，三羧酸循环饶过谁；忘不了有趣的老师们，杨Sir和他的iCat、湖南口音超好听的杨海明老师、还有马伟元马委员长，以及那些神奇的歌曲和口诀……</p>
 <h3 id="Part-1-生竞介绍–写一两本淡色书来"><a href="#Part-1-生竞介绍–写一两本淡色书来" class="headerlink" title="Part 1 生竞介绍–写一两本淡色书来~"></a>Part 1 <strong>生竞介绍</strong>–写一两本淡色书来~</h3><p><strong>1.赛制</strong><br>分为:预赛、联赛、决赛；有些天选之省还会有初试和省选哦。<br><strong>初赛</strong>：取得联赛资格，3~4月<br><strong>联赛</strong>：高一高二学生可以参加，五月的第二个周日<br><strong>省选</strong>：对联赛省一的大佬门进行筛选，前八名进入省队<br><strong>国赛</strong>：在每年八月，参加省各派一队参加（承办省可派出两队），每队8人，共240人参加</p>
 <p><strong>2.考试范围</strong><br>初试（高考难度）-联赛-国赛<br>具体介绍<strong>联赛</strong>（国赛我也没去过呀2333）:<br>考试时间两个小时，包括120道选择题（单选、多选），主要考察比例如下（参考质心姐姐）:<br><strong>（1. 细胞生物学、生物化学、微生物学、生物信息学、生物技术 25%</strong><br><strong>（2. 植物和动物的解剖、生理、组织和器官的结构与功能 30%</strong><br><strong>（3. 动物行为学、生态学 20%</strong><br><strong>（4. 遗传学与进化生物学、生物系统学25%</strong><br>注意，国赛中还会包括实验部分。</p>
 <h3 id="Part-2-信仰书推荐–吵，您顺意吵，（吵得）铜壶呼盐瓶。"><a href="#Part-2-信仰书推荐–吵，您顺意吵，（吵得）铜壶呼盐瓶。" class="headerlink" title="Part 2 信仰书推荐–吵，您顺意吵，（吵得）铜壶呼盐瓶。"></a>Part 2 <strong>信仰书推荐</strong>–吵，您顺意吵，（吵得）铜壶呼盐瓶。</h3><p><strong>目录书</strong>：陈阅增《普通生物学》</p>
@@ -196,6 +284,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">RuBP的算法笔记-1.1基本输入输出</a>
+          </li>
         
           <li>
             <a href="/2022/01/06/RuBP%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/">RuBP的碎碎念-1【生竞的那些事】【总结】</a>
