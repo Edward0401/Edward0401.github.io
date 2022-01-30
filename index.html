@@ -75,6 +75,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-RuBP的算法笔记-1-3算术表达式与顺序执行" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" class="article-date">
+  <time class="dt-published" datetime="2022-01-30T14:58:03.000Z" itemprop="datePublished">2022-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/">RuBP的算法笔记-1.3算术表达式与顺序执行</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-3算术表达式与顺序执行"><a href="#1-3算术表达式与顺序执行" class="headerlink" title="1.3算术表达式与顺序执行"></a>1.3算术表达式与顺序执行</h1><h2 id="1-c-double-a-b"><a href="#1-c-double-a-b" class="headerlink" title="1. c=double(a)/b;"></a>1. c=double(a)/b;</h2><p>​        注意：运算符的结果精度取决于参与运算的数据类型，在运算时发生自动类型转换；<strong>先计算再赋值</strong>；因此，将结果赋予一个高精度数并<strong>不</strong>能改变运算的精度。</p>
+<h2 id="2-取整方法"><a href="#2-取整方法" class="headerlink" title="2.取整方法"></a>2.取整方法</h2><p>C/C++提供了库函数用来向上或向下取整，<strong>ceil()与floor()</strong>.</p>
+<p>#include <cmath></p>
+<p>double floor (double x) // 对x进行向下取整</p>
+<p>double ceil (double y) // 对y进行向上取整</p>
+<p>另外注意 / 并不是进行四舍五入（7/2 = 3），所以我们可以用</p>
+<p>(int)(a/b) +1<br>来表示向上取整，同样的用</p>
+<p>(int)(a/b) -1</p>
+<p>来表示向下取整。</p>
+<p>而C/C++中存在进行四舍五入运算的库函数RoundEx(double x):</p>
+<p>RoundEx(1.4) = 1</p>
+<p>RoundEx(1.6) = 2</p>
+<p>RoundEx(-1.4) = -1</p>
+<p>RoundEx(-1.6) = -2<br>————————————————<br>版权声明：本文为CSDN博主「2205」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yun2205446823/article/details/50751714">https://blog.csdn.net/yun2205446823/article/details/50751714</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" data-id="ckz1e1vj600004wv51xsr2m5x" data-title="RuBP的算法笔记-1.3算术表达式与顺序执行" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-RuBP的算法笔记-1-1基本输入输出" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="article-date">
@@ -284,6 +336,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/">RuBP的算法笔记-1.3算术表达式与顺序执行</a>
+          </li>
         
           <li>
             <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">RuBP的算法笔记-1.1基本输入输出</a>
