@@ -4,15 +4,22 @@
   <meta charset="utf-8">
   
   
-  <title>RuBP的小站</title>
+  <title>RuBP的算法笔记-关于质数 | RuBP的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RuBP的小站">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="关于质数1.每次试除时其实只要除到 sqrt(n)  只需要在2到  之间寻找 n 的因数 并且除2之外不需要试除偶数 123456789101112131415bool is_prime2(unsigned long long n) &amp;#123; &#x2F;&#x2F;middle	long long stop &#x3D; sqrt(n) + 1;	if (n &#x3D;&#x3D; 2) &amp;#123;		return 1;	&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RuBP的算法笔记-关于质数">
+<meta property="og:url" content="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/index.html">
 <meta property="og:site_name" content="RuBP的小站">
+<meta property="og:description" content="关于质数1.每次试除时其实只要除到 sqrt(n)  只需要在2到  之间寻找 n 的因数 并且除2之外不需要试除偶数 123456789101112131415bool is_prime2(unsigned long long n) &amp;#123; &#x2F;&#x2F;middle	long long stop &#x3D; sqrt(n) + 1;	if (n &#x3D;&#x3D; 2) &amp;#123;		return 1;	&amp;#125;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cleft%5B+%5Csqrt%7Bn%7D+%5Cright%5D">
+<meta property="og:image" content="https://img-blog.csdn.net/20170530211507737?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXBwbGV3bGQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="article:published_time" content="2022-01-30T14:59:21.000Z">
+<meta property="article:modified_time" content="2022-01-30T15:00:08.251Z">
 <meta property="article:author" content="合弓纲电子">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zhihu.com/equation?tex=%5Cleft%5B+%5Csqrt%7Bn%7D+%5Cright%5D">
   
     <link rel="alternate" href="/atom.xml" title="RuBP的小站" type="application/atom+xml">
   
@@ -73,9 +80,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-RuBP的算法笔记-关于质数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-RuBP的算法笔记-关于质数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/" class="article-date">
   <time class="dt-published" datetime="2022-01-30T14:59:21.000Z" itemprop="datePublished">2022-01-30</time>
@@ -88,8 +93,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/">RuBP的算法笔记-关于质数</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      RuBP的算法笔记-关于质数
     </h1>
   
 
@@ -126,243 +131,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-RuBP的算法笔记-1-3算术表达式与顺序执行" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T14:58:03.000Z" itemprop="datePublished">2022-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/">RuBP的算法笔记-1.3算术表达式与顺序执行</a>
-    </h1>
+    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">RuBP的算法笔记-1.3算术表达式与顺序执行</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-3算术表达式与顺序执行"><a href="#1-3算术表达式与顺序执行" class="headerlink" title="1.3算术表达式与顺序执行"></a>1.3算术表达式与顺序执行</h1><h2 id="1-c-double-a-b"><a href="#1-c-double-a-b" class="headerlink" title="1. c=double(a)/b;"></a>1. c=double(a)/b;</h2><p>​        注意：运算符的结果精度取决于参与运算的数据类型，在运算时发生自动类型转换；<strong>先计算再赋值</strong>；因此，将结果赋予一个高精度数并<strong>不</strong>能改变运算的精度。</p>
-<h2 id="2-取整方法"><a href="#2-取整方法" class="headerlink" title="2.取整方法"></a>2.取整方法</h2><p>C/C++提供了库函数用来向上或向下取整，<strong>ceil()与floor()</strong>.</p>
-<p>#include <cmath></p>
-<p>double floor (double x) // 对x进行向下取整</p>
-<p>double ceil (double y) // 对y进行向上取整</p>
-<p>另外注意 / 并不是进行四舍五入（7/2 = 3），所以我们可以用</p>
-<p>(int)(a/b) +1<br>来表示向上取整，同样的用</p>
-<p>(int)(a/b) -1</p>
-<p>来表示向下取整。</p>
-<p>而C/C++中存在进行四舍五入运算的库函数RoundEx(double x):</p>
-<p>RoundEx(1.4) = 1</p>
-<p>RoundEx(1.6) = 2</p>
-<p>RoundEx(-1.4) = -1</p>
-<p>RoundEx(-1.6) = -2<br>————————————————<br>版权声明：本文为CSDN博主「2205」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yun2205446823/article/details/50751714">https://blog.csdn.net/yun2205446823/article/details/50751714</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" data-id="ckz1e1vj600004wv51xsr2m5x" data-title="RuBP的算法笔记-1.3算术表达式与顺序执行" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-RuBP的算法笔记-1-1基本输入输出" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T14:52:38.000Z" itemprop="datePublished">2022-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">RuBP的算法笔记-1.1基本输入输出</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-1基本输入输出-格式化"><a href="#1-1基本输入输出-格式化" class="headerlink" title="1.1基本输入输出-格式化"></a>1.1基本输入输出-格式化</h1><h2 id="1-printf格式化输出"><a href="#1-printf格式化输出" class="headerlink" title="1.printf格式化输出"></a>1.printf格式化输出</h2><ol>
-<li></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">占位符</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">%i:%d、%o、%x</td>
-<td align="center">int:(10),(8),(16)</td>
-</tr>
-<tr>
-<td align="center">%f</td>
-<td align="center">float/double</td>
-</tr>
-<tr>
-<td align="center">%e</td>
-<td align="center">float/double【科学计数法】</td>
-</tr>
-<tr>
-<td align="center">%g</td>
-<td align="center">自动选择%f/%e</td>
-</tr>
-<tr>
-<td align="center">%s</td>
-<td align="center">string，[首地址，要加&amp;]</td>
-</tr>
-<tr>
-<td align="center">%c</td>
-<td align="center">char</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li><strong>%.xf</strong> 格式化输出，保留几位小数</li>
-<li><strong>注意：输出时小数尾部没有多余的0：</strong><br>printf(“%g”, x);</li>
-</ol>
-<h2 id="2-cout格式化输出"><a href="#2-cout格式化输出" class="headerlink" title="2.cout格式化输出"></a>2.cout格式化输出</h2><ol>
-<li><p><strong>setw(x)</strong>:</p>
-<p>规定输出宽度【右对齐】，不足的在<strong>前方</strong>补空；</p>
-<p>注意与空格区分，不能代替额外的空格。</p>
-</li>
-</ol>
-<h2 id="3-二者区别："><a href="#3-二者区别：" class="headerlink" title="3.二者区别："></a>3.二者区别：</h2><ol>
-<li>cin会主动<strong>忽略空格和换行</strong>，因而不能完全覆盖ASCII码</li>
-<li>时间区别，在竞赛平台上scanf更快；</li>
-<li>cin利用了<strong>缓冲区</strong></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" data-id="ckz1dxqvo000054v56m0j86u4" data-title="RuBP的算法笔记-1.1基本输入输出" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-RuBP的碎碎念" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/01/06/RuBP%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" class="article-date">
-  <time class="dt-published" datetime="2022-01-06T09:28:36.000Z" itemprop="datePublished">2022-01-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/06/RuBP%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/">RuBP的碎碎念-1【生竞的那些事】【总结】</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>托更许久，我在大一上结束前终于下定决心对自己高中阶段的热爱做一个总结。回首高中学习全理的这两年（尤其是三年来对生物的学习），对自然和生命的那段学习过程给予了我终身难忘的经历、深刻地影响了我的世界观，也使我结交了一群真诚而有趣的朋友。<br>然而，我最终还是为了发展去学习了计算机科学与技术，暂时放下了自己心中的热爱。但是放下不等于放弃，对精巧生命规律的信仰和惊叹还在。永远忘不了疯狂刷书、看了又忘、忘了又看的那段日子；永远忘不了和大佬们分工整理笔记；忘不了被生理生化疯狂折磨，三羧酸循环饶过谁；忘不了有趣的老师们，杨Sir和他的iCat、湖南口音超好听的杨海明老师、还有马伟元马委员长，以及那些神奇的歌曲和口诀……</p>
-<h3 id="Part-1-生竞介绍–写一两本淡色书来"><a href="#Part-1-生竞介绍–写一两本淡色书来" class="headerlink" title="Part 1 生竞介绍–写一两本淡色书来~"></a>Part 1 <strong>生竞介绍</strong>–写一两本淡色书来~</h3><p><strong>1.赛制</strong><br>分为:预赛、联赛、决赛；有些天选之省还会有初试和省选哦。<br><strong>初赛</strong>：取得联赛资格，3~4月<br><strong>联赛</strong>：高一高二学生可以参加，五月的第二个周日<br><strong>省选</strong>：对联赛省一的大佬门进行筛选，前八名进入省队<br><strong>国赛</strong>：在每年八月，参加省各派一队参加（承办省可派出两队），每队8人，共240人参加</p>
-<p><strong>2.考试范围</strong><br>初试（高考难度）-联赛-国赛<br>具体介绍<strong>联赛</strong>（国赛我也没去过呀2333）:<br>考试时间两个小时，包括120道选择题（单选、多选），主要考察比例如下（参考质心姐姐）:<br><strong>（1. 细胞生物学、生物化学、微生物学、生物信息学、生物技术 25%</strong><br><strong>（2. 植物和动物的解剖、生理、组织和器官的结构与功能 30%</strong><br><strong>（3. 动物行为学、生态学 20%</strong><br><strong>（4. 遗传学与进化生物学、生物系统学25%</strong><br>注意，国赛中还会包括实验部分。</p>
-<h3 id="Part-2-信仰书推荐–吵，您顺意吵，（吵得）铜壶呼盐瓶。"><a href="#Part-2-信仰书推荐–吵，您顺意吵，（吵得）铜壶呼盐瓶。" class="headerlink" title="Part 2 信仰书推荐–吵，您顺意吵，（吵得）铜壶呼盐瓶。"></a>Part 2 <strong>信仰书推荐</strong>–吵，您顺意吵，（吵得）铜壶呼盐瓶。</h3><p><strong>目录书</strong>：陈阅增《普通生物学》</p>
-<p><strong>第一</strong>：翟中和《细胞生物学》 张丽萍《生物化学简明教程》</p>
-<p>刘凌云《普通动物学》 马炜梁《植物学》 潘瑞炽《植物生理学》</p>
-<p>牛翠娟《基础生态学》 尚玉昌《动物行为学》 刘祖洞《遗传学》</p>
-<p><strong>第二</strong>：杨荣武《生物化学原理》 侯林《动物学》</p>
-<p>沈萍《微生物学》杨安峰《脊椎动物比较解剖学》 陆时万《植物学》（上册）</p>
-<p>人卫《生理学》 武维华《植物生理学》 戴灼华《遗传学》 银柱《进化生物学》 </p>
-<p>朱斌《全国中学生生物学联赛理论解析》（麦解）</p>
-<p><strong>第三</strong>： 孙儒泳《动物生态学原理》 Douglas（ 顾红雅译） <em>Evolution</em>  </p>
-<p>【参考了知乎 @狂人 大佬的博文】</p>
-<h3 id="Part-3-结语-一草一木谱写成诗"><a href="#Part-3-结语-一草一木谱写成诗" class="headerlink" title="Part 3 结语-一草一木谱写成诗"></a>Part 3 <strong>结语</strong>-一草一木谱写成诗</h3><p>无论你我现在身在何方，在朝何处去，我们的热爱和付出都一定能够获得回报！</p>
-<p>最后作结：<br>宁异戊同，二虎索苹果，草~【狗头】</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/06/RuBP%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/" data-id="cky30269j0000bov5809i6dg4" data-title="RuBP的碎碎念-1【生竞的那些事】【总结】" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-起点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/01/05/%E8%B5%B7%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2022-01-05T14:56:43.000Z" itemprop="datePublished">2022-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/05/%E8%B5%B7%E7%82%B9/">起点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>这是我第一次尝试个人主页，请多多关照！<br>新年新气象，今后我将会在这里（胡乱）记录一些学习和非学习上的有趣事情。<br>时2022年1月5日 22：53：33</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/05/%E8%B5%B7%E7%82%B9/" data-id="cky1nyww800005wv5abtf3dr1" data-title="起点" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
