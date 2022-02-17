@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>RuBP的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="基本算法之递归1.波兰表达式描述 波兰表达式是一种把运算符前置的算术表达式，例如普通的表达式2 + 3的波兰表示法为+ 2 3。波兰表达式的优点是运算符之间不必有优先级关系，也不必用括号改变运算次序，例如(2 + 3) * 4的波兰表示法为* + 2 3 4。本题求解波兰表达式的值，其中运算符包括+ - * &#x2F;四个。 输入 输入为一行，其中运算符和运算数之间都用空格分隔，运算数是浮点数。 输出 输">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RuBP的小站">
+<meta property="og:url" content="http://example.com/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/index.html">
+<meta property="og:site_name" content="RuBP的小站">
+<meta property="og:description" content="基本算法之递归1.波兰表达式描述 波兰表达式是一种把运算符前置的算术表达式，例如普通的表达式2 + 3的波兰表示法为+ 2 3。波兰表达式的优点是运算符之间不必有优先级关系，也不必用括号改变运算次序，例如(2 + 3) * 4的波兰表示法为* + 2 3 4。本题求解波兰表达式的值，其中运算符包括+ - * &#x2F;四个。 输入 输入为一行，其中运算符和运算数之间都用空格分隔，运算数是浮点数。 输出 输">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://media.openjudge.cn/images/g1508/2506_1.jpg">
+<meta property="article:published_time" content="2022-02-17T04:42:41.756Z">
+<meta property="article:modified_time" content="2022-02-11T06:53:33.000Z">
+<meta property="article:author" content="合弓纲电子">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://media.openjudge.cn/images/g1508/2506_1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="RuBP的小站" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">RuBP的小站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">关于计算机、生物和生活的杂谈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-RuBP的算法笔记-递归和递推" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/" class="article-date">
+  <time class="dt-published" datetime="2022-02-17T04:42:41.756Z" itemprop="datePublished">2022-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="基本算法之递归"><a href="#基本算法之递归" class="headerlink" title="基本算法之递归"></a>基本算法之递归</h1><h2 id="1-波兰表达式"><a href="#1-波兰表达式" class="headerlink" title="1.波兰表达式"></a>1.波兰表达式</h2><p>描述</p>
+<p>波兰表达式是一种把运算符前置的算术表达式，例如普通的表达式2 + 3的波兰表示法为+ 2 3。波兰表达式的优点是运算符之间不必有优先级关系，也不必用括号改变运算次序，例如(2 + 3) * 4的波兰表示法为* + 2 3 4。本题求解波兰表达式的值，其中运算符包括+ - * /四个。</p>
+<p>输入</p>
+<p>输入为一行，其中运算符和运算数之间都用空格分隔，运算数是浮点数。</p>
+<p>输出</p>
+<p>输出为一行，表达式的值。<br>可直接用printf(“%f\n”, v)输出表达式的值v。</p>
+<p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* + 11.0 12.0 + 24.0 35.0</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1357.000000</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<p>可使用stof(str)把字符串转换为一个double类型的浮点数。atof定义在iomanip中。<br>此题可使用函数递归调用的方法求解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calculate</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;fixed&lt;&lt;<span class="built_in">setprecision</span>(<span class="number">6</span>)&lt;&lt;<span class="built_in">calculate</span>()&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calculate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string s;cin&gt;&gt;s;</span><br><span class="line">    <span class="keyword">if</span>(s==<span class="string">&quot;+&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()+<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">&quot;-&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()-<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">&quot;*&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()*<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">&quot;/&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()/<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">stof</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-汉诺塔问题"><a href="#2-汉诺塔问题" class="headerlink" title="2.汉诺塔问题"></a>2.汉诺塔问题</h2><p>描述</p>
+<p>约19世纪末，在欧州的商店中出售一种智力玩具，在一块铜板上有三根杆，最左边的杆上自上而下、由小到大顺序串着由64个圆盘构成的塔。目的是将最左边杆上的盘全部移到中间的杆上，条件是一次只能移动一个盘，且不允许大盘放在小盘的上面。<br>这是一个著名的问题，几乎所有的教材上都有这个问题。由于条件是一次只能移动一个盘，且不允许大盘放在小盘上面，所以64个盘的移动次数是：18,446,744,073,709,551,615<br>这是一个天文数字，若每一微秒可能计算(并不输出)一次移动，那么也需要几乎一百万年。我们仅能找出问题的解决方法并解决较小N值时的汉诺塔，但很难用计算机解决64层的汉诺塔。</p>
+<p>假定圆盘从小到大编号为1, 2, …</p>
+<p>输入</p>
+<p>输入为一个整数后面跟三个单字符字符串。<br>整数为盘子的数目，后三个字符表示三个杆子的编号。</p>
+<p>输出</p>
+<p>输出每一步移动盘子的记录。一次移动一行。<br>每次移动的记录为例如 a-&gt;3-&gt;b 的形式，即把编号为3的盘子从a杆移至b杆。</p>
+<p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 a b c</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a-&gt;1-&gt;c</span><br><span class="line">a-&gt;2-&gt;b</span><br><span class="line">c-&gt;1-&gt;b</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong>汉诺塔问题可以用递归的思维简化为三步：</p>
+<p><strong>1.将n-1个盘子移动到辅助柱C上</strong></p>
+<p><strong>2.将最后一个盘子n移动到目标柱B上</strong></p>
+<p><strong>3.将n-1个盘子从C移动到B上</strong></p>
+<p>其中，1、3两个步骤使用递归，而步骤二则保证只有一个盘子被操纵。</p>
+<p>此时，保证了<strong>n即是这一次循环中要移动盘子的个数，也是要移动的最底下盘子的标号</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">han</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">char</span> a,<span class="keyword">char</span> b,<span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;%d-&gt;%c\n&quot;</span>,a,n,c); </span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    	<span class="built_in">han</span>(n<span class="number">-1</span>,a,c,b);</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;%d-&gt;%c\n&quot;</span>,a,n,c); </span><br><span class="line">    	<span class="built_in">han</span>(n<span class="number">-1</span>,b,a,c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">int</span> n;<span class="keyword">char</span> a,b,c;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">    <span class="built_in">han</span>(n,a,c,b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-PKU2506Tiling（递推）"><a href="#3-PKU2506Tiling（递推）" class="headerlink" title="3.PKU2506Tiling（递推）"></a>3.PKU2506Tiling（递推）</h2><ul>
+<li><p>描述</p>
+<p>对于一个2行N列的走道。现在用1<em>2,2</em>2的砖去铺满。问有多少种不同的方式。  下图是一个2行17列的走道的某种铺法。    <img src="http://media.openjudge.cn/images/g1508/2506_1.jpg" alt="img"> </p>
+</li>
+<li><p>输入</p>
+<p>整个测试有多组数据，请做到文件底结束。每行给出一个数字N，0 &lt;= n &lt;= 250</p>
+</li>
+<li><p>输出</p>
+<p>如题</p>
+</li>
+<li><p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">8</span><br><span class="line">12</span><br><span class="line">100</span><br><span class="line">200</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">171</span><br><span class="line">2731</span><br><span class="line">845100400152152934331135470251</span><br><span class="line">1071292029505993517027974728227441735014801995855195223534251</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>此题需要使用递归方法：<br>$$<br>将结果记作数列f(n)，则f(n)与之前的f(n-1)和f(n-2)呈现递推关系：<br>第n块木板总共可能有三种情况：f(n)=f(n)_1+f(n)_2+f(n)_3\<br>当第n块木板是2<em>2时，第n和n-1列唯一确定，f(n)_1=f(n-2);\<br>当第n块木板是竖放的2</em>1时，第n列唯一确定，f(n)_2=f(n-1);\<br>当第n块木板是横放的2*1时，第n和n-1列必然是两块横放的木板，f(n)_3=f(n-2)\<br>综上,f(n)=f(n-1)+2f(n-2)<br>$$<br><strong><em>注意：</em>数据量比较大(最后一个样例已经远远超过了16位)要用高精度加法来实现</strong>。</p>
+<p>​            <em><strong>先相加，后进位</strong></em></p>
+<p>$$<br><em>易错点：</em>强行将其分成若干个2<em>2和一个2</em>1的方块；每个2<em>2方块有三种，进行先排列后分布乘法；<br> \错点：忽略了会有2</em>1的方块贯穿2*2模块之间的存在<br>$$<br>和一个</p>
+<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">300</span>][<span class="number">1000</span>]; <span class="comment">//a[n/*表示长度为n时的结果*/][高精度表示法的位数]</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">//a[n][0]表示长度为n的情况下的结果长度</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>,a[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>;<span class="comment">//初始值，n=1时只有一种方法 </span></span><br><span class="line">	a[<span class="number">2</span>][<span class="number">0</span>]=<span class="number">1</span>,a[<span class="number">2</span>][<span class="number">1</span>]=<span class="number">3</span>;<span class="comment">//初始值，n=3时有三种方法 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=<span class="number">250</span>;i++)</span><br><span class="line">	&#123;<span class="comment">//代入递推公式，需要使用高精度加法</span></span><br><span class="line">		<span class="comment">//先逐位相加 </span></span><br><span class="line">		a[i][<span class="number">0</span>]=<span class="built_in">max</span>(a[i<span class="number">-1</span>][<span class="number">0</span>],a[i<span class="number">-2</span>][<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=a[i][<span class="number">0</span>];j++)</span><br><span class="line">			a[i][j]=a[i<span class="number">-1</span>][j]+a[i<span class="number">-2</span>][j]*<span class="number">2</span>;</span><br><span class="line">		<span class="comment">//再把进位规范化</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=a[i][<span class="number">0</span>];j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i][j]&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">				a[i][j+<span class="number">1</span>]+=a[i][j]/<span class="number">10</span>;</span><br><span class="line">				a[i][j]%=<span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(a[i][a[i][<span class="number">0</span>]+<span class="number">1</span>])a[i][<span class="number">0</span>]++;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;n)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) cout&lt;&lt;<span class="number">1</span>&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=a[n][<span class="number">0</span>];i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">			&#123;</span><br><span class="line">				cout&lt;&lt;a[n][i];</span><br><span class="line">			&#125;</span><br><span class="line">			cout&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h4><p>【1】zqwang.简单递归-PKU2506Tiling.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zqwang/article/details/79487895%EF%BC%8C%E6%9C%89%E6%94%B9%E5%8A%A8">https://blog.csdn.net/zqwang/article/details/79487895，有改动</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/" data-id="ckzqhznxj0001x8v5bkxy3erj" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 合弓纲电子<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

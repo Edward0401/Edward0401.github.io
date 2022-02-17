@@ -75,25 +75,161 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-RuBP的算法笔记-重难点及错题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-RuBP的算法笔记-分治算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T15:01:50.000Z" itemprop="datePublished">2022-01-30</time>
+    <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2022-02-17T04:42:41.772Z" itemprop="datePublished">2022-02-17</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/">RuBP的算法笔记-重难点及错题</a>
-    </h1>
-  
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="基本算法之分治"><a href="#基本算法之分治" class="headerlink" title="基本算法之分治"></a>基本算法之分治</h1><h2 id="1-2991-2011"><a href="#1-2991-2011" class="headerlink" title="1.2991-2011"></a>1.2991-2011</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><ul>
+<li><p>总时间限制: </p>
+<p>1000ms</p>
+</li>
+<li><p>内存限制: </p>
+<p>65536kB</p>
+</li>
+<li><p>描述</p>
+<p>已知长度最大为200位的正整数n，请求出2011^n的后四位。</p>
+</li>
+<li><p>输入</p>
+<p>第一行为一个正整数k，代表有k组数据，k&lt;=200接下来的k行，  每行都有一个正整数n，n的位数&lt;=200</p>
+</li>
+<li><p>输出</p>
+<p>每一个n的结果为一个整数占一行，若不足4位，去除高位多余的0</p>
+</li>
+<li><p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5</span><br><span class="line">28</span><br><span class="line">792</span><br></pre></td></tr></table></figure></li>
+<li><p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1051</span><br><span class="line">81</span><br><span class="line">5521</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>此题有两个要解决的点：一是2011的幂次方会超过long long的最大数据范围，二是要求的k为200<em><strong>位</strong></em>以内，也会超出空间和时间要求；</p>
+<p>注意到相乘的后四位仅与后四位相关，因此本题的第一个障碍使用分治思想催化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> data[<span class="number">200</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> old=<span class="number">2011</span>;</span><br><span class="line"></span><br><span class="line">  cout&lt;&lt;<span class="number">2011</span>&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">​    old=old*<span class="number">2011</span>%<span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">​    cout&lt;&lt;old&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">if</span>(old==<span class="number">2011</span>)&#123;</span><br><span class="line"></span><br><span class="line">​      cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">​      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      </header>
+<p>第二个障碍，如果直接处理在时间和空间复杂度上必定不可能符合要求，因此猜想必定存在某个数使得其结果循环（2011），代码见上。【结果为500】</p>
+<p>故，采用分治思想，只需<strong>对500取余</strong>即可</p>
+<h3 id="最终代码："><a href="#最终代码：" class="headerlink" title="最终代码："></a>最终代码：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> da[<span class="number">500</span>],out[<span class="number">200</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k;cin&gt;&gt;k;</span><br><span class="line">    <span class="keyword">int</span> old=<span class="number">2011</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">500</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        old=old*<span class="number">2011</span>%<span class="number">10000</span>;</span><br><span class="line">        da[i]=old;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        string s;cin&gt;&gt;s;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">if</span>(s.<span class="built_in">size</span>()&gt;<span class="number">3</span>)</span><br><span class="line">            n=<span class="built_in">stoi</span>(s.<span class="built_in">substr</span>(s.<span class="built_in">size</span>()<span class="number">-3</span>));</span><br><span class="line">        <span class="keyword">else</span> n=<span class="built_in">stoi</span>(s);</span><br><span class="line">        n%=<span class="number">500</span>;</span><br><span class="line">        out[i]=da[n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;out[i]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" data-id="ckzqhznxg0000x8v58c4q1jm6" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-RuBP的算法笔记-递归和递推" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/" class="article-date">
+  <time class="dt-published" datetime="2022-02-17T04:42:41.756Z" itemprop="datePublished">2022-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="基本算法之递归"><a href="#基本算法之递归" class="headerlink" title="基本算法之递归"></a>基本算法之递归</h1><h2 id="1-波兰表达式"><a href="#1-波兰表达式" class="headerlink" title="1.波兰表达式"></a>1.波兰表达式</h2><p>描述</p>
+<p>波兰表达式是一种把运算符前置的算术表达式，例如普通的表达式2 + 3的波兰表示法为+ 2 3。波兰表达式的优点是运算符之间不必有优先级关系，也不必用括号改变运算次序，例如(2 + 3) * 4的波兰表示法为* + 2 3 4。本题求解波兰表达式的值，其中运算符包括+ - * /四个。</p>
+<p>输入</p>
+<p>输入为一行，其中运算符和运算数之间都用空格分隔，运算数是浮点数。</p>
+<p>输出</p>
+<p>输出为一行，表达式的值。<br>可直接用printf(“%f\n”, v)输出表达式的值v。</p>
+<p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* + 11.0 12.0 + 24.0 35.0</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1357.000000</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<p>可使用stof(str)把字符串转换为一个double类型的浮点数。atof定义在iomanip中。<br>此题可使用函数递归调用的方法求解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calculate</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;fixed&lt;&lt;<span class="built_in">setprecision</span>(<span class="number">6</span>)&lt;&lt;<span class="built_in">calculate</span>()&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calculate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string s;cin&gt;&gt;s;</span><br><span class="line">    <span class="keyword">if</span>(s==<span class="string">&quot;+&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()+<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">&quot;-&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()-<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">&quot;*&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()*<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">&quot;/&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">calculate</span>()/<span class="built_in">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">stof</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-汉诺塔问题"><a href="#2-汉诺塔问题" class="headerlink" title="2.汉诺塔问题"></a>2.汉诺塔问题</h2><p>描述</p>
+<p>约19世纪末，在欧州的商店中出售一种智力玩具，在一块铜板上有三根杆，最左边的杆上自上而下、由小到大顺序串着由64个圆盘构成的塔。目的是将最左边杆上的盘全部移到中间的杆上，条件是一次只能移动一个盘，且不允许大盘放在小盘的上面。<br>这是一个著名的问题，几乎所有的教材上都有这个问题。由于条件是一次只能移动一个盘，且不允许大盘放在小盘上面，所以64个盘的移动次数是：18,446,744,073,709,551,615<br>这是一个天文数字，若每一微秒可能计算(并不输出)一次移动，那么也需要几乎一百万年。我们仅能找出问题的解决方法并解决较小N值时的汉诺塔，但很难用计算机解决64层的汉诺塔。</p>
+<p>假定圆盘从小到大编号为1, 2, …</p>
+<p>输入</p>
+<p>输入为一个整数后面跟三个单字符字符串。<br>整数为盘子的数目，后三个字符表示三个杆子的编号。</p>
+<p>输出</p>
+<p>输出每一步移动盘子的记录。一次移动一行。<br>每次移动的记录为例如 a-&gt;3-&gt;b 的形式，即把编号为3的盘子从a杆移至b杆。</p>
+<p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 a b c</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a-&gt;1-&gt;c</span><br><span class="line">a-&gt;2-&gt;b</span><br><span class="line">c-&gt;1-&gt;b</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong>汉诺塔问题可以用递归的思维简化为三步：</p>
+<p><strong>1.将n-1个盘子移动到辅助柱C上</strong></p>
+<p><strong>2.将最后一个盘子n移动到目标柱B上</strong></p>
+<p><strong>3.将n-1个盘子从C移动到B上</strong></p>
+<p>其中，1、3两个步骤使用递归，而步骤二则保证只有一个盘子被操纵。</p>
+<p>此时，保证了<strong>n即是这一次循环中要移动盘子的个数，也是要移动的最底下盘子的标号</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">han</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">char</span> a,<span class="keyword">char</span> b,<span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;%d-&gt;%c\n&quot;</span>,a,n,c); </span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    	<span class="built_in">han</span>(n<span class="number">-1</span>,a,c,b);</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;%d-&gt;%c\n&quot;</span>,a,n,c); </span><br><span class="line">    	<span class="built_in">han</span>(n<span class="number">-1</span>,b,a,c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">int</span> n;<span class="keyword">char</span> a,b,c;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">    <span class="built_in">han</span>(n,a,c,b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-PKU2506Tiling（递推）"><a href="#3-PKU2506Tiling（递推）" class="headerlink" title="3.PKU2506Tiling（递推）"></a>3.PKU2506Tiling（递推）</h2><ul>
+<li><p>描述</p>
+<p>对于一个2行N列的走道。现在用1<em>2,2</em>2的砖去铺满。问有多少种不同的方式。  下图是一个2行17列的走道的某种铺法。    <img src="http://media.openjudge.cn/images/g1508/2506_1.jpg" alt="img"> </p>
+</li>
+<li><p>输入</p>
+<p>整个测试有多组数据，请做到文件底结束。每行给出一个数字N，0 &lt;= n &lt;= 250</p>
+</li>
+<li><p>输出</p>
+<p>如题</p>
+</li>
+<li><p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">8</span><br><span class="line">12</span><br><span class="line">100</span><br><span class="line">200</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">171</span><br><span class="line">2731</span><br><span class="line">845100400152152934331135470251</span><br><span class="line">1071292029505993517027974728227441735014801995855195223534251</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>此题需要使用递归方法：<br>$$<br>将结果记作数列f(n)，则f(n)与之前的f(n-1)和f(n-2)呈现递推关系：<br>第n块木板总共可能有三种情况：f(n)=f(n)_1+f(n)_2+f(n)_3\<br>当第n块木板是2<em>2时，第n和n-1列唯一确定，f(n)_1=f(n-2);\<br>当第n块木板是竖放的2</em>1时，第n列唯一确定，f(n)_2=f(n-1);\<br>当第n块木板是横放的2*1时，第n和n-1列必然是两块横放的木板，f(n)_3=f(n-2)\<br>综上,f(n)=f(n-1)+2f(n-2)<br>$$<br><strong><em>注意：</em>数据量比较大(最后一个样例已经远远超过了16位)要用高精度加法来实现</strong>。</p>
+<p>​            <em><strong>先相加，后进位</strong></em></p>
+<p>$$<br><em>易错点：</em>强行将其分成若干个2<em>2和一个2</em>1的方块；每个2<em>2方块有三种，进行先排列后分布乘法；<br> \错点：忽略了会有2</em>1的方块贯穿2*2模块之间的存在<br>$$<br>和一个</p>
+<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">300</span>][<span class="number">1000</span>]; <span class="comment">//a[n/*表示长度为n时的结果*/][高精度表示法的位数]</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">//a[n][0]表示长度为n的情况下的结果长度</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>,a[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>;<span class="comment">//初始值，n=1时只有一种方法 </span></span><br><span class="line">	a[<span class="number">2</span>][<span class="number">0</span>]=<span class="number">1</span>,a[<span class="number">2</span>][<span class="number">1</span>]=<span class="number">3</span>;<span class="comment">//初始值，n=3时有三种方法 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=<span class="number">250</span>;i++)</span><br><span class="line">	&#123;<span class="comment">//代入递推公式，需要使用高精度加法</span></span><br><span class="line">		<span class="comment">//先逐位相加 </span></span><br><span class="line">		a[i][<span class="number">0</span>]=<span class="built_in">max</span>(a[i<span class="number">-1</span>][<span class="number">0</span>],a[i<span class="number">-2</span>][<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=a[i][<span class="number">0</span>];j++)</span><br><span class="line">			a[i][j]=a[i<span class="number">-1</span>][j]+a[i<span class="number">-2</span>][j]*<span class="number">2</span>;</span><br><span class="line">		<span class="comment">//再把进位规范化</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=a[i][<span class="number">0</span>];j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i][j]&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">				a[i][j+<span class="number">1</span>]+=a[i][j]/<span class="number">10</span>;</span><br><span class="line">				a[i][j]%=<span class="number">10</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(a[i][a[i][<span class="number">0</span>]+<span class="number">1</span>])a[i][<span class="number">0</span>]++;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;n)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) cout&lt;&lt;<span class="number">1</span>&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=a[n][<span class="number">0</span>];i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">			&#123;</span><br><span class="line">				cout&lt;&lt;a[n][i];</span><br><span class="line">			&#125;</span><br><span class="line">			cout&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h4><p>【1】zqwang.简单递归-PKU2506Tiling.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zqwang/article/details/79487895%EF%BC%8C%E6%9C%89%E6%94%B9%E5%8A%A8">https://blog.csdn.net/zqwang/article/details/79487895，有改动</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/" data-id="ckzqhznxj0001x8v5bkxy3erj" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-RuBP的算法笔记-重难点及错题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-01-30T15:01:50.582Z" itemprop="datePublished">2022-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -158,11 +294,48 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span><span class="comment">//memset在头文件cstring中 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000005</span>];</span><br><span class="line"><span class="comment">//a数组表示，在x=i的列上，有a[i]的高度</span></span><br><span class="line"><span class="comment">//将二维问题降低成一维问题考虑： </span></span><br><span class="line"><span class="comment">//题目变成了：//有n个数字：</span></span><br><span class="line"><span class="comment">//1 左边和要求大于右边和，但是差值尽可能小</span></span><br><span class="line"><span class="comment">//2 左边的数字和尽可能大！ </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,ans;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">delta</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll s1=<span class="number">0</span>;<span class="comment">//左和</span></span><br><span class="line">	ll s2=<span class="number">0</span>;<span class="comment">//右和</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;x;i++) s1+=a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;m;i++) s2+=a[i];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> s1-s2;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//输入与降维预处理 </span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;m,&amp;n);</span><br><span class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(a));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y,dx,dy;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d %d&quot;</span>,&amp;x,&amp;y,&amp;dx,&amp;dy);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=x;j&lt;x+dx;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[j]+=dy;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//二分代码 </span></span><br><span class="line">	<span class="keyword">int</span> l=<span class="number">0</span>,r=m,mid;</span><br><span class="line">	<span class="keyword">while</span>(l+<span class="number">3</span>&lt;r)<span class="comment">//终值是从(l-&gt;r)这么多个数字 </span></span><br><span class="line">	&#123;</span><br><span class="line">		mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">delta</span>(mid)&gt;<span class="number">0</span>) r=mid;</span><br><span class="line">		<span class="keyword">else</span> l=mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//求出了符合条件1的 l-&gt;r</span></span><br><span class="line">	ll su=<span class="number">999999999999</span>;<span class="comment">//longlong</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=r;i&gt;=l;i--)<span class="comment">//对终值进行简单的判断 </span></span><br><span class="line">	&#123;</span><br><span class="line">		ll s=<span class="built_in">delta</span>(i);</span><br><span class="line">		<span class="keyword">if</span>(s&gt;=<span class="number">0</span>&amp;&amp;s&lt;su) &#123;su=s; ans=i;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//细节2：需要切线尽可能靠右 </span></span><br><span class="line">	<span class="keyword">while</span>(ans&lt;m&amp;&amp;a[ans]==<span class="number">0</span>) ans++;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,ans);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>[^版权申明]: 7.矩形二分 为CSDN博主「liusu201601」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</p>
+<h2 id="8-数组复制的那些事"><a href="#8-数组复制的那些事" class="headerlink" title="8.数组复制的那些事"></a>8.数组复制的那些事</h2><p>使用<cstring>头文件中的memcpy函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="built_in">memcpy</span>(copy,old,size*<span class="keyword">sizeof</span>);<span class="comment">//注意最后一项是字节数</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="9-网线主管"><a href="#9-网线主管" class="headerlink" title="9.网线主管"></a>9.网线主管</h2><p>要将所有选手的电脑等距离地围绕在服务器周围放置，且希望网线越长越好。已知库存中每条网线的长度（精确到厘米），你需要编写一个程序，帮助网线主管确定一个最长的网线长度，并且按此长度对库存中的网线进行切割，能够得到指定数量的网线。</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第一行包含两个整数N和K，以单个空格隔开。N（1 &lt;= N &lt;= 10000）是库存中的网线数，K（1 &lt;= K &lt;= 10000）是需要的网线数量。<br>接下来N行，每行一个数，为库存中每条网线的长度（单位：米）。所有网线的长度至少1m，至多100km。输入中的所有长度都精确到厘米，即保留到小数点后两位。</p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>网线主管能够从库存的网线中切出指定数量的网线的最长长度（单位：米）。必须精确到厘米，即保留到小数点后两位。<br>若无法得到长度至少为1cm的指定数量的网线，则必须输出“0.00”（不包含引号）。</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 11</span><br><span class="line">8.02</span><br><span class="line">7.43</span><br><span class="line">4.57</span><br><span class="line">5.39</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.00</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a><em>注意事项：</em></h4><p>容易误以为最短的网线长度就是二分查找的最大值，但实际上；只要<strong>网线数量多于选手数量，<em>最短的网线就可以空缺出来。</em></strong>因此<strong>二分查找的最大值是</strong>100km，即10000000cm.</p>
+<h2 id="10-cmath中的三角函数，自变量均为弧度"><a href="#10-cmath中的三角函数，自变量均为弧度" class="headerlink" title="10.cmath中的三角函数，自变量均为弧度"></a>10.cmath中的三角函数，自变量均为<em>弧度</em></h2><p>例题：</p>
+<h3 id="膨胀的木棍"><a href="#膨胀的木棍" class="headerlink" title="膨胀的木棍"></a>膨胀的木棍</h3><p>描述</p>
+<p>当长度为L的一根细木棍的温度升高n度，它会膨胀到新的长度L’=(1+n*C)*L，其中C是热膨胀系数。</p>
+<p>当一根细木棍被嵌在两堵墙之间被加热，它将膨胀形成弓形的弧，而这个弓形的弦恰好是未加热前木棍的原始位置。</p>
+<p>你的任务是计算木棍中心的偏移距离。</p>
+<p><img src="http://media.openjudge.cn/images/upload/1423469597.jpg" alt="img"></p>
+<p>输入</p>
+<p>三个非负实数：木棍初始长度（单位：毫米），温度变化（单位：度），以及材料的热膨胀系数。<br>保证木棍不会膨胀到超过原始长度的1.5倍。</p>
+<p>输出</p>
+<p>木棍中心的偏移距离（单位：毫米），保留到小数点后第三位。</p>
+<p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1000 100 0.0001</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">61.329</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Pi 3.1415926535897</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> esp 1e-5</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> l,n,c,lp;cin&gt;&gt;l&gt;&gt;n&gt;&gt;c;</span><br><span class="line">	lp=(<span class="number">1</span>+n*c)*l;</span><br><span class="line">	<span class="keyword">double</span> low=<span class="number">0</span>,high=l/<span class="number">2</span>,d=l/<span class="number">4</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">0</span>&lt;d&amp;&amp;d&lt;l/<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">double</span> r=(<span class="number">4</span>*d*d+l*l)/(<span class="number">8</span>*d);</span><br><span class="line">		<span class="keyword">if</span>(high-low&lt;esp)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">2</span>*r*<span class="built_in">asin</span>(l/(<span class="number">2</span>*r))&gt;lp) <span class="comment">//left</span></span><br><span class="line">		&#123;</span><br><span class="line">			high=d;d=(low+high)/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;<span class="comment">//right</span></span><br><span class="line">			low=d;d=(low+high)/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>,d);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="E:\Administrator\Desktop\演示文稿1.svg" alt="演示文稿1" style="zoom:200%;" />
+$$
+\\对d进行二分：
+\\注意到：l^2+(r-d)^2=r^2,可由此求出r
+\\同时，tan\,\alpha=\frac{\frac{l}{2}}{r-d}，s=r*2\alpha,验证差值的大小
+$$
+
+<h2 id="11-注意str-erase-begin-amount-会改变原有的字符串"><a href="#11-注意str-erase-begin-amount-会改变原有的字符串" class="headerlink" title="11.注意str.erase(begin,amount)会改变原有的字符串"></a>11.注意str.erase(begin,amount)会改变原有的字符串</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" data-id="ckz1e68vx0001fkv54cmqbm35" data-title="RuBP的算法笔记-重难点及错题" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" data-id="ckz1e68vx0001fkv54cmqbm35" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -177,22 +350,12 @@
     <article id="post-RuBP的算法笔记-几种排序方式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T15:01:05.000Z" itemprop="datePublished">2022-01-30</time>
+  <time class="dt-published" datetime="2022-01-30T15:01:05.044Z" itemprop="datePublished">2022-01-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/">RuBP的算法笔记-几种排序方式</a>
-    </h1>
-  
-
-      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -231,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/" data-id="ckz1e68vp0000fkv51ms39ziy" data-title="RuBP的算法笔记-几种排序方式" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/" data-id="ckz1e68vp0000fkv51ms39ziy" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -246,22 +409,12 @@
     <article id="post-RuBP的算法笔记-关于质数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T14:59:21.000Z" itemprop="datePublished">2022-01-30</time>
+  <time class="dt-published" datetime="2022-01-30T14:59:21.113Z" itemprop="datePublished">2022-01-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/">RuBP的算法笔记-关于质数</a>
-    </h1>
-  
-
-      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -287,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/" data-id="ckz1e435y0000wsv54in49kby" data-title="RuBP的算法笔记-关于质数" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/" data-id="ckz1e435y0000wsv54in49kby" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -302,22 +455,12 @@
     <article id="post-RuBP的算法笔记-1-3算术表达式与顺序执行" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T14:58:03.000Z" itemprop="datePublished">2022-01-30</time>
+  <time class="dt-published" datetime="2022-01-30T14:58:03.399Z" itemprop="datePublished">2022-01-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/">RuBP的算法笔记-1.3算术表达式与顺序执行</a>
-    </h1>
-  
-
-      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -335,11 +478,12 @@
 <p>RoundEx(1.6) = 2</p>
 <p>RoundEx(-1.4) = -1</p>
 <p>RoundEx(-1.6) = -2<br>————————————————<br>版权声明：本文为CSDN博主「2205」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yun2205446823/article/details/50751714">https://blog.csdn.net/yun2205446823/article/details/50751714</a></p>
+<h2 id="3-void和return-小技巧"><a href="#3-void和return-小技巧" class="headerlink" title="3.void和return[小技巧]"></a>3.void和return[小技巧]</h2><p>对于返回类型为void的函数，也可以使用 ‘**return;**’ 来结束该函数；只是不得有返回值。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" data-id="ckz1e1vj600004wv51xsr2m5x" data-title="RuBP的算法笔记-1.3算术表达式与顺序执行" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/" data-id="ckz1e1vj600004wv51xsr2m5x" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -354,22 +498,12 @@
     <article id="post-RuBP的算法笔记-1-1基本输入输出" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T14:52:38.000Z" itemprop="datePublished">2022-01-30</time>
+  <time class="dt-published" datetime="2022-01-30T14:52:38.356Z" itemprop="datePublished">2022-01-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">RuBP的算法笔记-1.1基本输入输出</a>
-    </h1>
-  
-
-      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -427,7 +561,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" data-id="ckz1dxqvo000054v56m0j86u4" data-title="RuBP的算法笔记-1.1基本输入输出" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" data-id="ckz1dxqvo000054v56m0j86u4" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -549,7 +683,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li></ul>
     </div>
   </div>
 
@@ -562,23 +696,23 @@
       <ul>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/">RuBP的算法笔记-重难点及错题</a>
+            <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/">RuBP的算法笔记-几种排序方式</a>
+            <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/">RuBP的算法笔记-关于质数</a>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/">RuBP的算法笔记-1.3算术表达式与顺序执行</a>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">RuBP的算法笔记-1.1基本输入输出</a>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/">(no title)</a>
           </li>
         
       </ul>

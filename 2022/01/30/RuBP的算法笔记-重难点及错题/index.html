@@ -4,18 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>RuBP的算法笔记-重难点及错题 | RuBP的小站</title>
+  <title>RuBP的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="重难点及错题1.忽略大小写的字符串比较描述 一般我们用strcmp可比较两个字符串的大小，比较方法为对两个字符串从前往后逐个字符相比较（按ASCII码值大小比较），直到出现不同的字符或遇到’\0’为止。如果全部字符都相同，则认为相同；如果出现不相同的字符，则以第一个不相同的字符的比较结果为准（注意：如果某个字符串遇到’\0’而另一个字符串还未遇到’\0’，则前者小于后者）。但在有些时候，我们比较字">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RuBP的算法笔记-重难点及错题">
+<meta property="og:title" content="RuBP的小站">
 <meta property="og:url" content="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/index.html">
 <meta property="og:site_name" content="RuBP的小站">
 <meta property="og:description" content="重难点及错题1.忽略大小写的字符串比较描述 一般我们用strcmp可比较两个字符串的大小，比较方法为对两个字符串从前往后逐个字符相比较（按ASCII码值大小比较），直到出现不同的字符或遇到’\0’为止。如果全部字符都相同，则认为相同；如果出现不相同的字符，则以第一个不相同的字符的比较结果为准（注意：如果某个字符串遇到’\0’而另一个字符串还未遇到’\0’，则前者小于后者）。但在有些时候，我们比较字">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190312111846637.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdXN1MjAxNjAx,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2022-01-30T15:01:50.000Z">
-<meta property="article:modified_time" content="2022-01-30T15:02:00.807Z">
+<meta property="og:image" content="http://media.openjudge.cn/images/upload/1423469597.jpg">
+<meta property="og:image" content="e:/Administrator/Desktop/演示文稿1.svg">
+<meta property="article:published_time" content="2022-01-30T15:01:50.582Z">
+<meta property="article:modified_time" content="2022-02-09T11:47:17.000Z">
 <meta property="article:author" content="合弓纲电子">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190312111846637.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdXN1MjAxNjAx,size_16,color_FFFFFF,t_70">
@@ -82,22 +84,12 @@
         <section id="main"><article id="post-RuBP的算法笔记-重难点及错题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" class="article-date">
-  <time class="dt-published" datetime="2022-01-30T15:01:50.000Z" itemprop="datePublished">2022-01-30</time>
+  <time class="dt-published" datetime="2022-01-30T15:01:50.582Z" itemprop="datePublished">2022-01-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      RuBP的算法笔记-重难点及错题
-    </h1>
-  
-
-      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -162,11 +154,48 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span><span class="comment">//memset在头文件cstring中 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000005</span>];</span><br><span class="line"><span class="comment">//a数组表示，在x=i的列上，有a[i]的高度</span></span><br><span class="line"><span class="comment">//将二维问题降低成一维问题考虑： </span></span><br><span class="line"><span class="comment">//题目变成了：//有n个数字：</span></span><br><span class="line"><span class="comment">//1 左边和要求大于右边和，但是差值尽可能小</span></span><br><span class="line"><span class="comment">//2 左边的数字和尽可能大！ </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,ans;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">delta</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll s1=<span class="number">0</span>;<span class="comment">//左和</span></span><br><span class="line">	ll s2=<span class="number">0</span>;<span class="comment">//右和</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;x;i++) s1+=a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;m;i++) s2+=a[i];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> s1-s2;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//输入与降维预处理 </span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;m,&amp;n);</span><br><span class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(a));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y,dx,dy;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d %d&quot;</span>,&amp;x,&amp;y,&amp;dx,&amp;dy);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=x;j&lt;x+dx;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[j]+=dy;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//二分代码 </span></span><br><span class="line">	<span class="keyword">int</span> l=<span class="number">0</span>,r=m,mid;</span><br><span class="line">	<span class="keyword">while</span>(l+<span class="number">3</span>&lt;r)<span class="comment">//终值是从(l-&gt;r)这么多个数字 </span></span><br><span class="line">	&#123;</span><br><span class="line">		mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">delta</span>(mid)&gt;<span class="number">0</span>) r=mid;</span><br><span class="line">		<span class="keyword">else</span> l=mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//求出了符合条件1的 l-&gt;r</span></span><br><span class="line">	ll su=<span class="number">999999999999</span>;<span class="comment">//longlong</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=r;i&gt;=l;i--)<span class="comment">//对终值进行简单的判断 </span></span><br><span class="line">	&#123;</span><br><span class="line">		ll s=<span class="built_in">delta</span>(i);</span><br><span class="line">		<span class="keyword">if</span>(s&gt;=<span class="number">0</span>&amp;&amp;s&lt;su) &#123;su=s; ans=i;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//细节2：需要切线尽可能靠右 </span></span><br><span class="line">	<span class="keyword">while</span>(ans&lt;m&amp;&amp;a[ans]==<span class="number">0</span>) ans++;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,ans);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>[^版权申明]: 7.矩形二分 为CSDN博主「liusu201601」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</p>
+<h2 id="8-数组复制的那些事"><a href="#8-数组复制的那些事" class="headerlink" title="8.数组复制的那些事"></a>8.数组复制的那些事</h2><p>使用<cstring>头文件中的memcpy函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="built_in">memcpy</span>(copy,old,size*<span class="keyword">sizeof</span>);<span class="comment">//注意最后一项是字节数</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="9-网线主管"><a href="#9-网线主管" class="headerlink" title="9.网线主管"></a>9.网线主管</h2><p>要将所有选手的电脑等距离地围绕在服务器周围放置，且希望网线越长越好。已知库存中每条网线的长度（精确到厘米），你需要编写一个程序，帮助网线主管确定一个最长的网线长度，并且按此长度对库存中的网线进行切割，能够得到指定数量的网线。</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第一行包含两个整数N和K，以单个空格隔开。N（1 &lt;= N &lt;= 10000）是库存中的网线数，K（1 &lt;= K &lt;= 10000）是需要的网线数量。<br>接下来N行，每行一个数，为库存中每条网线的长度（单位：米）。所有网线的长度至少1m，至多100km。输入中的所有长度都精确到厘米，即保留到小数点后两位。</p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>网线主管能够从库存的网线中切出指定数量的网线的最长长度（单位：米）。必须精确到厘米，即保留到小数点后两位。<br>若无法得到长度至少为1cm的指定数量的网线，则必须输出“0.00”（不包含引号）。</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 11</span><br><span class="line">8.02</span><br><span class="line">7.43</span><br><span class="line">4.57</span><br><span class="line">5.39</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.00</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a><em>注意事项：</em></h4><p>容易误以为最短的网线长度就是二分查找的最大值，但实际上；只要<strong>网线数量多于选手数量，<em>最短的网线就可以空缺出来。</em></strong>因此<strong>二分查找的最大值是</strong>100km，即10000000cm.</p>
+<h2 id="10-cmath中的三角函数，自变量均为弧度"><a href="#10-cmath中的三角函数，自变量均为弧度" class="headerlink" title="10.cmath中的三角函数，自变量均为弧度"></a>10.cmath中的三角函数，自变量均为<em>弧度</em></h2><p>例题：</p>
+<h3 id="膨胀的木棍"><a href="#膨胀的木棍" class="headerlink" title="膨胀的木棍"></a>膨胀的木棍</h3><p>描述</p>
+<p>当长度为L的一根细木棍的温度升高n度，它会膨胀到新的长度L’=(1+n*C)*L，其中C是热膨胀系数。</p>
+<p>当一根细木棍被嵌在两堵墙之间被加热，它将膨胀形成弓形的弧，而这个弓形的弦恰好是未加热前木棍的原始位置。</p>
+<p>你的任务是计算木棍中心的偏移距离。</p>
+<p><img src="http://media.openjudge.cn/images/upload/1423469597.jpg" alt="img"></p>
+<p>输入</p>
+<p>三个非负实数：木棍初始长度（单位：毫米），温度变化（单位：度），以及材料的热膨胀系数。<br>保证木棍不会膨胀到超过原始长度的1.5倍。</p>
+<p>输出</p>
+<p>木棍中心的偏移距离（单位：毫米），保留到小数点后第三位。</p>
+<p>样例输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1000 100 0.0001</span><br></pre></td></tr></table></figure>
+
+<p>样例输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">61.329</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Pi 3.1415926535897</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> esp 1e-5</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> l,n,c,lp;cin&gt;&gt;l&gt;&gt;n&gt;&gt;c;</span><br><span class="line">	lp=(<span class="number">1</span>+n*c)*l;</span><br><span class="line">	<span class="keyword">double</span> low=<span class="number">0</span>,high=l/<span class="number">2</span>,d=l/<span class="number">4</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">0</span>&lt;d&amp;&amp;d&lt;l/<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">double</span> r=(<span class="number">4</span>*d*d+l*l)/(<span class="number">8</span>*d);</span><br><span class="line">		<span class="keyword">if</span>(high-low&lt;esp)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">2</span>*r*<span class="built_in">asin</span>(l/(<span class="number">2</span>*r))&gt;lp) <span class="comment">//left</span></span><br><span class="line">		&#123;</span><br><span class="line">			high=d;d=(low+high)/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;<span class="comment">//right</span></span><br><span class="line">			low=d;d=(low+high)/<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>,d);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="E:\Administrator\Desktop\演示文稿1.svg" alt="演示文稿1" style="zoom:200%;" />
+$$
+\\对d进行二分：
+\\注意到：l^2+(r-d)^2=r^2,可由此求出r
+\\同时，tan\,\alpha=\frac{\frac{l}{2}}{r-d}，s=r*2\alpha,验证差值的大小
+$$
+
+<h2 id="11-注意str-erase-begin-amount-会改变原有的字符串"><a href="#11-注意str-erase-begin-amount-会改变原有的字符串" class="headerlink" title="11.注意str.erase(begin,amount)会改变原有的字符串"></a>11.注意str.erase(begin,amount)会改变原有的字符串</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" data-id="ckz1e68vx0001fkv54cmqbm35" data-title="RuBP的算法笔记-重难点及错题" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/" data-id="ckz1e68vx0001fkv54cmqbm35" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -176,10 +205,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
   
     <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">RuBP的算法笔记-几种排序方式</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
@@ -204,7 +242,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li></ul>
     </div>
   </div>
 
@@ -217,23 +255,23 @@
       <ul>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/">RuBP的算法笔记-重难点及错题</a>
+            <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/">RuBP的算法笔记-几种排序方式</a>
+            <a href="/2022/02/17/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E6%8E%A8/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/">RuBP的算法笔记-关于质数</a>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E9%87%8D%E9%9A%BE%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-3%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C/">RuBP的算法笔记-1.3算术表达式与顺序执行</a>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-1-1%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">RuBP的算法笔记-1.1基本输入输出</a>
+            <a href="/2022/01/30/RuBP%E7%9A%84%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E8%B4%A8%E6%95%B0/">(no title)</a>
           </li>
         
       </ul>
